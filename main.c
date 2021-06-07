@@ -146,3 +146,9 @@ int desempilha(Pilha *p){   //Retira um elemento da Pilha
         return elemento;
         }
 }
+
+//########  MAIN ###############
+
+int main(){
+    return 0;
+}
