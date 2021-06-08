@@ -24,4 +24,7 @@ int main(){
     i=inserirDisco(pinoA,i);
     i=inserirDisco(pinoB,i);
     i=inserirDisco(pinoC,i);
+    excluiPilha(pinoA);
+    excluiPilha(pinoB);
+    excluiPilha(pinoC);
 }

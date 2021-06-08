@@ -43,8 +43,24 @@ void leDiscos(Pilha *p, int i){
     for(cont=1;cont<=i;cont++){
         printf("Digite o raio do %iº disco: ", cont);
         scanf("%d", &raio);
+        raio=validaRaio(p, raio);
         empilha(raio, p);
     }
+}
+int validaRaio(Pilha *p, int raio){
+    while(raio<=0){
+        printf("\nO Valor do Raio não pode ser menor ou igual a 0!\nDigite Novamente");
+        scanf("%d", &raio);
+    }
+    if(p->topo==NULL){
+    }
+    else{
+        while(raio>p->topo->elemento){
+            printf("\nRaio inválido pois é maior que seu anterior!Digite Novamente:");
+            scanf("%d", &raio);
+        }
+    }
+    return raio;
 }
 
 void empilha(int i, Pilha *p){  //Adiciona um novo elemento na Pilha

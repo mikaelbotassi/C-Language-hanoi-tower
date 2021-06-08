@@ -16,5 +16,6 @@ int validaQuantDiscos(int i, int total);
 void leDiscos(Pilha *p, int i);
 int pegaTotalDiscos();
 void excluiPilha(Pilha *p);
+int validaRaio(Pilha *p, int raio);
 
 #endif
