@@ -17,8 +17,11 @@
 
 int main(){
     setlocale(LC_ALL, "Portuguese");//Permite usar os acentos da língua portuguesa
+    int i=pegaTotalDiscos();
     Pilha *pinoA = inicializaPilha();
-    //Pilha *pinoB=inicializaPilha();
-    //Pilha *pinoC=inicializaPilha();
-    inserirDisco(pinoA,5);
+    Pilha *pinoB=inicializaPilha();
+    Pilha *pinoC=inicializaPilha();
+    i=inserirDisco(pinoA,i);
+    i=inserirDisco(pinoB,i);
+    i=inserirDisco(pinoC,i);
 }

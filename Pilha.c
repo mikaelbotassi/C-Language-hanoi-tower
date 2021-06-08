@@ -19,12 +19,14 @@ Pilha *inicializaPilha(){   //Aloca um espaço na memória e inicia a Fila
     return p;
 }
 
-void inserirDisco(Pilha *p, int total){
+int inserirDisco(Pilha *p, int total){
     int i;
     printf("Quantos Discos há no pino? ");
     scanf("%d", &i);
     i=validaQuantDiscos(i, total);
+    total=total-i;
     leDiscos(p,i);
+    return total;
 }
 
 int validaQuantDiscos(int i, int total){
@@ -81,7 +83,18 @@ int desempilha(Pilha *p){   //Retira um elemento da Pilha
         }
 }
 
-void excluiFila(Pilha *p){
+int pegaTotalDiscos(){
+    int i;
+    printf("\nDigite o total de discos(Máximo 10): ");
+    scanf("%d", &i);
+    while(i>10){
+        printf("O número de discos excede o limite que é 10, por favor Digite Novamente: ");
+        scanf("%d", &i);
+    }
+    return i;
+}
+
+void excluiPilha(Pilha *p){
     while(p->topo!=NULL){
         desempilha(p);
     }
