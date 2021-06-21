@@ -17,6 +17,7 @@
 
 int main(){
     setlocale(LC_ALL, "Portuguese");//Permite usar os acentos da língua portuguesa
+    printf("Digite as estradas de dados:");
     int i=pegaTotalDiscos();
     int total=i;
     Pilha *pinoA = inicializaPilha();
