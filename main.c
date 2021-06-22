@@ -26,10 +26,10 @@ int main(){
     i=inserirDisco(pinoA,i, 'A');
     i=inserirDisco(pinoB,i, 'B');
     i=inserirDisco(pinoC,i, 'C');
+    apresentaEntrada(pinoA,pinoB,pinoC, total);
     //apresentaPilha(pinoA);
     //resolucaoHanoi(pinoA,pinoB,pinoC,i,total);
     excluiPilha(pinoA);
-    apresentaPilha(pinoA);
-    //excluiPilha(pinoB);
-    //excluiPilha(pinoC);
+    excluiPilha(pinoB);
+    excluiPilha(pinoC);
 }

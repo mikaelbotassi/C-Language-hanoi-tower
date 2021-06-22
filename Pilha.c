@@ -126,11 +126,26 @@ void apresentaPilha(Pilha *p){
     }
 }
 
-void resolucaoHanoi(Pilha *orig, Pilha *aux, Pilha *dest, int disco, int total){
+apresentaEntrada(Pilha *A, Pilha *B, Pilha *C, int total){
+    printf("\n%d\n", total);
+
+    printf("%d  ", A->quant);
+    apresentaPilha(A);
+
+    printf("\n%d  ", B->quant);
+    apresentaPilha(B);
+    
+    printf("\n%d  ", C->quant);
+    apresentaPilha(C);
+}
+
+/*void resolucaoHanoi(Pilha *orig, Pilha *aux, Pilha *dest, int disco){
     if(orig->quant>0){
+        resolucaoHanoi(orig, dest, aux, desempilha(orig));
+        resolucaoHanoi(aux, orig, dest, desempilha(aux));
 
     }
     else{
 
     }
-}
+}*/

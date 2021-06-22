@@ -18,5 +18,6 @@ int pegaTotalDiscos();
 void excluiPilha(Pilha *p);
 int validaRaio(Pilha *p, int raio);
 void apresentaPilha(Pilha *p);
+apresentaEntrada(Pilha *A, Pilha *B, Pilha *C, int total);
 
 #endif
