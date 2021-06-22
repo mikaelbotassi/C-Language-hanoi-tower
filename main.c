@@ -17,16 +17,19 @@
 
 int main(){
     setlocale(LC_ALL, "Portuguese");//Permite usar os acentos da língua portuguesa
-    printf("Digite as estradas de dados:");
+    printf("Digite as entradas de dados:\n");
     int i=pegaTotalDiscos();
     int total=i;
     Pilha *pinoA = inicializaPilha();
     Pilha *pinoB=inicializaPilha();
     Pilha *pinoC=inicializaPilha();
-    i=inserirDisco(pinoA,i);
-    i=inserirDisco(pinoB,i);
-    i=inserirDisco(pinoC,i);
+    i=inserirDisco(pinoA,i, 'A');
+    i=inserirDisco(pinoB,i, 'B');
+    i=inserirDisco(pinoC,i, 'C');
+    //apresentaPilha(pinoA);
+    //resolucaoHanoi(pinoA,pinoB,pinoC,i,total);
     excluiPilha(pinoA);
-    excluiPilha(pinoB);
-    excluiPilha(pinoC);
+    apresentaPilha(pinoA);
+    //excluiPilha(pinoB);
+    //excluiPilha(pinoC);
 }

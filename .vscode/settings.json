@@ -1,6 +1,8 @@
 {
     "files.associations": {
         "fila.h": "c",
-        "pilha.h": "c"
+        "pilha.h": "c",
+        "pinos.h": "c",
+        "stdio.h": "c"
     }
 }

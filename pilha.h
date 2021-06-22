@@ -11,11 +11,12 @@ typedef struct Pilha Pilha;
 Pilha *inicializaPilha();
 void empilha(int i, Pilha *p);
 int desempilha(Pilha *p);
-int inserirDisco(Pilha *p, int total);
+int inserirDisco(Pilha *p, int total, char pino);
 int validaQuantDiscos(int i, int total);
 void leDiscos(Pilha *p, int i);
 int pegaTotalDiscos();
 void excluiPilha(Pilha *p);
 int validaRaio(Pilha *p, int raio);
+void apresentaPilha(Pilha *p);
 
 #endif
