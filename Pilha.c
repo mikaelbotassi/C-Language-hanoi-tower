@@ -11,13 +11,15 @@ typedef struct NoPilha{
 typedef struct Pilha{
     NoPilha *topo;
     int quant;
+    char nome;
 }Pilha;
 
 //#######   FUNÇÕES #############
-Pilha *inicializaPilha(){   //Aloca um espaço na memória e inicia a Fila
+Pilha *inicializaPilha(char nome){   //Aloca um espaço na memória e inicia a Fila
     Pilha *p=(Pilha*) malloc(sizeof(Pilha));
     p->topo=NULL;
     p->quant=0;
+    p->nome=nome;
     return p;
 }
 
@@ -109,10 +111,10 @@ void excluiPilha(Pilha *p){
     }
 }
 void apresentaPilha(Pilha *p){
-    Pilha *aux=inicializaPilha();
+    Pilha *aux=inicializaPilha('X');
     int i;
     if(p->topo==NULL){
-        printf("Pilha Vazia!");
+        //printf("Pilha Vazia!");
     }
     else{
         while(p->topo!=NULL){
@@ -126,7 +128,9 @@ void apresentaPilha(Pilha *p){
     }
 }
 
-apresentaEntrada(Pilha *A, Pilha *B, Pilha *C, int total){
+apresentaEntrada(Pilha *A, Pilha *B, Pilha *C){
+    int total= A->quant+B->quant+C->quant;
+    printf("\n\n");
     printf("\n%d\n", total);
 
     printf("%d  ", A->quant);
@@ -139,13 +143,19 @@ apresentaEntrada(Pilha *A, Pilha *B, Pilha *C, int total){
     apresentaPilha(C);
 }
 
-/*void resolucaoHanoi(Pilha *orig, Pilha *aux, Pilha *dest, int disco){
-    if(orig->quant>0){
-        resolucaoHanoi(orig, dest, aux, desempilha(orig));
-        resolucaoHanoi(aux, orig, dest, desempilha(aux));
+void moveDisco(Pilha *A, Pilha *B){
+    printf("\nMover o disco de raio %d, de %c para %c", A->topo->elemento, A->nome, B->nome);
+    empilha(desempilha(A), B);
+}
 
+void resolucaoHanoi(Pilha *orig, Pilha *aux, Pilha *dest, int total){
+    if(total==1){
+        moveDisco(orig,dest);
     }
     else{
-
+        resolucaoHanoi(orig, dest, aux, total-1);
+        moveDisco(orig, dest);
+        resolucaoHanoi(aux,orig,dest, total-1);
     }
-}*/
+
+}

@@ -23,7 +23,8 @@
                     "ignoreFailures": true
                 }
             ],
-            "preLaunchTask": "C/C++: gcc.exe arquivo de build ativo"
+            "preLaunchTask": "C/C++: gcc.exe arquivo de build ativo",
+            "runtimeExecutable": "C:\\Program Files\\nodejs\\node.exe"
         }
     ]
 }

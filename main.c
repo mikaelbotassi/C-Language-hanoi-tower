@@ -20,16 +20,17 @@ int main(){
     printf("Digite as entradas de dados:\n");
     int i=pegaTotalDiscos();
     int total=i;
-    Pilha *pinoA = inicializaPilha();
-    Pilha *pinoB=inicializaPilha();
-    Pilha *pinoC=inicializaPilha();
+    Pilha *pinoA = inicializaPilha('A');
+    Pilha *pinoB=inicializaPilha('B');
+    Pilha *pinoC=inicializaPilha('C');
     i=inserirDisco(pinoA,i, 'A');
     i=inserirDisco(pinoB,i, 'B');
     i=inserirDisco(pinoC,i, 'C');
-    apresentaEntrada(pinoA,pinoB,pinoC, total);
-    //apresentaPilha(pinoA);
-    //resolucaoHanoi(pinoA,pinoB,pinoC,i,total);
-    excluiPilha(pinoA);
-    excluiPilha(pinoB);
-    excluiPilha(pinoC);
+    apresentaEntrada(pinoA,pinoB,pinoC);
+    resolucaoHanoi(pinoA,pinoB,pinoC, pinoA->quant);
+    apresentaEntrada(pinoA,pinoB,pinoC);
+    //apresentaPilha(pinoC);
+    //excluiPilha(pinoA);
+    //excluiPilha(pinoB);
+    //excluiPilha(pinoC);
 }
