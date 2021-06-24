@@ -18,8 +18,10 @@ int pegaTotalDiscos();
 void excluiPilha(Pilha *p);
 int validaRaio(Pilha *p, int raio);
 void apresentaPilha(Pilha *p);
-apresentaEntrada(Pilha *A, Pilha *B, Pilha *C);
+void apresentaEntrada(Pilha *A, Pilha *B, Pilha *C);
 void resolucaoHanoi(Pilha *orig, Pilha *aux, Pilha *dest, int total);
+char hanoiSimples(Pilha *orig, Pilha *aux, Pilha *dest, int total);
+void cerebro(Pilha *orig, Pilha *aux, Pilha *dest, int total);
 void moveDisco(Pilha *A, Pilha *B);
 
 #endif

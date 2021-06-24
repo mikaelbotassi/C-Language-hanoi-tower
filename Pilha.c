@@ -128,7 +128,7 @@ void apresentaPilha(Pilha *p){
     }
 }
 
-apresentaEntrada(Pilha *A, Pilha *B, Pilha *C){
+void apresentaEntrada(Pilha *A, Pilha *B, Pilha *C){
     int total= A->quant+B->quant+C->quant;
     printf("\n\n");
     printf("\n%d\n", total);
@@ -157,5 +157,31 @@ void resolucaoHanoi(Pilha *orig, Pilha *aux, Pilha *dest, int total){
         moveDisco(orig, dest);
         resolucaoHanoi(aux,orig,dest, total-1);
     }
+}
+char hanoiSimples(Pilha *orig, Pilha *aux, Pilha *dest, int total){
+    if(orig->quant>0 & aux->quant==0 & dest->quant==0){
+        return 'A';
+    }
+    if(orig->quant==0 & aux->quant>0 & dest->quant==0){
+        return 'B';
+    }
+    if(dest->quant>0 & aux->quant==0 & dest->quant==0){
+        return 'C';
+    }
+}
 
+void cerebro(Pilha *orig, Pilha *aux, Pilha *dest, int total){
+    while(dest->quant!=total){
+        if(hanoiSimples(orig, aux, dest, total)=='A'){
+            resolucaoHanoi(orig, aux, dest, orig->quant);
+        }
+        if(hanoiSimples(orig, aux, dest, total)=='B'){
+            resolucaoHanoi(aux, orig, dest, aux->quant);
+        }
+        if(hanoiSimples(orig, aux, dest, total)=='C'){
+            return;
+        }
+        //if(hanoiDoisPinos())
+
+    }
 }

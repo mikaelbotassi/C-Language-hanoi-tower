@@ -27,9 +27,8 @@ int main(){
     i=inserirDisco(pinoB,i, 'B');
     i=inserirDisco(pinoC,i, 'C');
     apresentaEntrada(pinoA,pinoB,pinoC);
-    resolucaoHanoi(pinoA,pinoB,pinoC, pinoA->quant);
+    cerebro(pinoA,pinoB,pinoC, total);
     apresentaEntrada(pinoA,pinoB,pinoC);
-    //apresentaPilha(pinoC);
     //excluiPilha(pinoA);
     //excluiPilha(pinoB);
     //excluiPilha(pinoC);
