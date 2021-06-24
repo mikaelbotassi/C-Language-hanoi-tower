@@ -3,6 +3,7 @@
         "fila.h": "c",
         "pilha.h": "c",
         "pinos.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "stdlib.h": "c"
     }
 }

@@ -20,8 +20,12 @@ int validaRaio(Pilha *p, int raio);
 void apresentaPilha(Pilha *p);
 void apresentaEntrada(Pilha *A, Pilha *B, Pilha *C);
 void resolucaoHanoi(Pilha *orig, Pilha *aux, Pilha *dest, int total);
-char hanoiSimples(Pilha *orig, Pilha *aux, Pilha *dest, int total);
+char hanoiSimples(Pilha *orig, Pilha *aux, Pilha *dest);
+void resolveHanoiSimples(Pilha *orig, Pilha *aux, Pilha *dest);
+void resolveHanoiDuplo(Pilha *orig, Pilha *aux, Pilha *dest);
+void hanoiDuplo(Pilha *orig, Pilha *aux, Pilha *dest);
 void cerebro(Pilha *orig, Pilha *aux, Pilha *dest, int total);
+void resolveHanoiTriplo(Pilha *orig, Pilha *aux, Pilha *dest);
 void moveDisco(Pilha *A, Pilha *B);
 
 #endif
