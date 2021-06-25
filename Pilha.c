@@ -215,26 +215,50 @@ void resolveHanoiDuplo(Pilha *orig, Pilha *aux, Pilha *dest){
         resolucaoHanoi(orig, dest, aux, orig->quant);
     }
     if(verificaTipoHanoiDuplo(orig, dest, aux)==1){
-        printf("\nESTIVE AQUI!\n");
         resolucaoHanoi(dest, aux, orig, dest->quant);
     }
     if(verificaTipoHanoiDuplo(dest, orig, aux)==1){
-        printf("\nESTIVE AQUI!\n");
         resolucaoHanoi(orig, aux, dest, orig->quant);
     }
     if(verificaTipoHanoiDuplo(aux, dest, orig)==1){
-        printf("\nESTIVE AQUI!\n");
         resolucaoHanoi(dest, orig, aux, dest->quant);
     }
     if(verificaTipoHanoiDuplo(dest, aux, orig)==1){
-        printf("\nESTIVE AQUI!\n");
         resolucaoHanoi(aux, orig, dest, aux->quant);
     }
 }
 
-/*void resolveHanoiTriplo(Pilha *orig, Pilha *aux, Pilha *dest){
+int verificaTipoHanoiTriplo(Pilha *orig, Pilha *aux, Pilha *dest){
+    if(orig->quant!=0 && aux->quant!=0 && dest->quant!=0){
+        if((orig->topo->elemento>aux->topo->elemento) && (orig->topo->elemento>dest->topo->elemento)&&(aux->topo->elemento>dest->topo->elemento)){
+        return 1;
+    }
+    }
+    else{
+        return 0;
+    }
+}
 
-}*/
+void resolveHanoiTriplo(Pilha *orig, Pilha *aux, Pilha *dest){
+    if(verificaTipoHanoiTriplo(orig,aux,dest)==1){
+        resolucaoHanoi(dest,aux,orig, dest->quant);
+    }
+    if(verificaTipoHanoiTriplo(orig,dest,aux)==1){
+        resolucaoHanoi(aux,dest,orig, aux->quant);
+    }
+    if(verificaTipoHanoiTriplo(aux,orig,dest)==1){
+        resolucaoHanoi(dest,orig,aux, dest->quant);
+    }
+    if(verificaTipoHanoiTriplo(aux,dest,orig)==1){
+        resolucaoHanoi(orig,dest,aux, orig->quant);
+    }
+    if(verificaTipoHanoiTriplo(dest,aux,orig)==1){
+        resolucaoHanoi(orig,aux,dest, orig->quant);
+    }
+    if(verificaTipoHanoiTriplo(dest,orig,aux)==1){
+        resolucaoHanoi(aux,orig,dest, aux->quant);
+    }
+}
 
 void cerebro(Pilha *orig, Pilha *aux, Pilha *dest, int total){
     while(dest->quant!=total){
@@ -245,9 +269,9 @@ void cerebro(Pilha *orig, Pilha *aux, Pilha *dest, int total){
             if(verificaTipo(orig,aux,dest)==2){
                 resolveHanoiDuplo(orig, aux, dest);
             }
-            /*if(verificaTipo(orig,aux,dest)==3){
+            if(verificaTipo(orig,aux,dest)==3){
                 resolveHanoiTriplo(orig, aux, dest);
-            }*/
+            }
         }
         
 

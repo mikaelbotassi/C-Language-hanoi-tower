@@ -26,6 +26,7 @@ void resolveHanoiDuplo(Pilha *orig, Pilha *aux, Pilha *dest);
 void hanoiDuplo(Pilha *orig, Pilha *aux, Pilha *dest);
 void cerebro(Pilha *orig, Pilha *aux, Pilha *dest, int total);
 int verificaTipoHanoiDuplo(Pilha *orig, Pilha *aux, Pilha *dest);
+int verificaTipoHanoiTriplo(Pilha *orig, Pilha *aux, Pilha *dest);
 void resolveHanoiTriplo(Pilha *orig, Pilha *aux, Pilha *dest);
 void moveDisco(Pilha *A, Pilha *B);
 
