@@ -4,6 +4,7 @@
         "pilha.h": "c",
         "pinos.h": "c",
         "stdio.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "locale.h": "c"
     }
 }
