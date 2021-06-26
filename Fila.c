@@ -4,13 +4,15 @@
 
 //######    ESTRUTURAS ###########
 typedef struct No{
-    int elemento;
+    char origem;
+    char destino;
     struct No *prox;
 }No;
 
 typedef struct Fila{
     No *inicio;
     No *fim;
+    int movimentos;
 }Fila;
 
 //#######   FUNÇÕES #############
@@ -19,16 +21,18 @@ Fila *inicializaFila(){ //Aloca o espaço de memória da Fila
     Fila *f=(Fila*) malloc(sizeof(Fila));
     f->inicio=NULL;
     f->fim=NULL;
+    f->movimentos=0;
     return f;
 }
 
-void push(Fila * f, int novoEle){   //Adiciona um elemento da Fila
+void push(Fila * f, char origem, char destino){   //Adiciona um elemento da Fila
     No *novoNo = (No*) malloc(sizeof(No));
     if(novoNo==NULL){
         printf("\n\nDesculpe, ocorreu um erro ao alocar o novo nó.\n\n");
         return;
     }else{
-        novoNo->elemento=novoEle;
+        novoNo->origem=origem;
+        novoNo->destino=destino;
         novoNo->prox=NULL;
         if(f->inicio==NULL){
             f->inicio=novoNo;
@@ -38,6 +42,7 @@ void push(Fila * f, int novoEle){   //Adiciona um elemento da Fila
         }
 
         f->fim=novoNo;
+        f->movimentos++;
         return;
     }
 
@@ -45,7 +50,7 @@ void push(Fila * f, int novoEle){   //Adiciona um elemento da Fila
 
 int pop(Fila *f){   //Retira um elemento da Fila
     No *aux=f->inicio;
-    int elemento;
+    char elemento;
     if(aux==NULL){
         printf("\n\nFila vazia! Não é possível retirar elementos!\n\n");
         return;
@@ -53,12 +58,12 @@ int pop(Fila *f){   //Retira um elemento da Fila
     else{
         f->inicio=f->inicio->prox;
         aux->prox=NULL;
-        elemento=aux->elemento;
+        elemento=aux->origem;
         free(aux);
         if(f->inicio==NULL){
             f->fim=NULL;
         }
-
+        f->movimentos--;
         return elemento;
     }
 }
@@ -70,7 +75,7 @@ void imprimeFila(Fila *f){ //Imprime todos os elementos da fila
     }
     else{
         while(aux!=NULL){
-            printf("%d  ", aux->elemento);
+            printf("%c  %c", aux->origem, aux->destino);
             aux=aux->prox;
         }
     }

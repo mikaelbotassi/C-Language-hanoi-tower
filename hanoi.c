@@ -60,14 +60,24 @@ void apresentaEntrada(Pilha *A, Pilha *B, Pilha *C){
 }
 
 void moveDisco(Pilha *A, Pilha *B){
-    printf("\nMover o disco de raio %d, de %c para %c", A->topo->elemento, A->nome, B->nome);
-    /*if(A->quant!=0 && B->quant!=0){
-        if(A->topo>B->topo){
+    if(A->quant!=0){
+        if(B->quant!=0){
+            if(A->topo->elemento>B->topo->elemento){
             return;
+            }
+            else{
+            printf("\nMover o disco de raio %d, de %c para %c", A->topo->elemento, A->nome, B->nome);
+            empilha(desempilha(A), B);
+            }
+        }
+        else{
+            printf("\nMover o disco de raio %d, de %c para %c", A->topo->elemento, A->nome, B->nome);
+            empilha(desempilha(A), B);
         }
     }
-    else{*/
-        empilha(desempilha(A), B);
+    else{
+        return;
+    }
 }
 
 void resolucaoHanoi(Pilha *orig, Pilha *aux, Pilha *dest, int total){
