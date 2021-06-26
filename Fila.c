@@ -48,7 +48,7 @@ void push(Fila * f, char origem, char destino){   //Adiciona um elemento da Fila
 
 }
 
-int pop(Fila *f){   //Retira um elemento da Fila
+char pop(Fila *f){   //Retira um elemento da Fila
     No *aux=f->inicio;
     char elemento;
     if(aux==NULL){
@@ -74,8 +74,9 @@ void imprimeFila(Fila *f){ //Imprime todos os elementos da fila
         printf("\n\nFila vazia.\n\n");
     }
     else{
+        printf("\n\n\n%d\n", f->movimentos);
         while(aux!=NULL){
-            printf("%c  %c", aux->origem, aux->destino);
+            printf("%c %c\n", aux->origem, aux->destino);
             aux=aux->prox;
         }
     }

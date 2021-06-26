@@ -59,19 +59,21 @@ void apresentaEntrada(Pilha *A, Pilha *B, Pilha *C){
     apresentaPilha(C);
 }
 
-void moveDisco(Pilha *A, Pilha *B){
+void moveDisco(Pilha *A, Pilha *B, Fila *movimentos){
     if(A->quant!=0){
         if(B->quant!=0){
             if(A->topo->elemento>B->topo->elemento){
             return;
             }
             else{
-            printf("\nMover o disco de raio %d, de %c para %c", A->topo->elemento, A->nome, B->nome);
+            //printf("\nMover o disco de raio %d, de %c para %c", A->topo->elemento, A->nome, B->nome);
+            push(movimentos, A->nome, B->nome);
             empilha(desempilha(A), B);
             }
         }
         else{
-            printf("\nMover o disco de raio %d, de %c para %c", A->topo->elemento, A->nome, B->nome);
+            //printf("\nMover o disco de raio %d, de %c para %c", A->topo->elemento, A->nome, B->nome);
+            push(movimentos, A->nome, B->nome);
             empilha(desempilha(A), B);
         }
     }
@@ -80,23 +82,23 @@ void moveDisco(Pilha *A, Pilha *B){
     }
 }
 
-void resolucaoHanoi(Pilha *orig, Pilha *aux, Pilha *dest, int total){
+void resolucaoHanoi(Pilha *orig, Pilha *aux, Pilha *dest, int total, Fila *movimentos){
     if(total==1){
-        moveDisco(orig,dest);
+        moveDisco(orig,dest, movimentos);
     }
     else{
-        resolucaoHanoi(orig, dest, aux, total-1);
-        moveDisco(orig, dest);
-        resolucaoHanoi(aux,orig,dest, total-1);
+        resolucaoHanoi(orig, dest, aux, total-1, movimentos);
+        moveDisco(orig, dest, movimentos);
+        resolucaoHanoi(aux,orig,dest, total-1, movimentos);
     }
 }
 
-void resolveHanoiSimples(Pilha *orig, Pilha *aux, Pilha *dest){
+void resolveHanoiSimples(Pilha *orig, Pilha *aux, Pilha *dest, Fila *movimentos){
     if(hanoiSimples(orig, aux, dest)=='A'){
-            resolucaoHanoi(orig, aux, dest, orig->quant);
+            resolucaoHanoi(orig, aux, dest, orig->quant, movimentos);
         }
     if(hanoiSimples(orig, aux, dest)=='B'){
-        resolucaoHanoi(aux, orig, dest, aux->quant);
+        resolucaoHanoi(aux, orig, dest, aux->quant, movimentos);
     }
     if(hanoiSimples(orig, aux, dest)=='C'){
         return;
@@ -138,24 +140,24 @@ int verificaTipoHanoiDuplo(Pilha *orig, Pilha *aux, Pilha *dest){
     }
 }
 
-void resolveHanoiDuplo(Pilha *orig, Pilha *aux, Pilha *dest){
+void resolveHanoiDuplo(Pilha *orig, Pilha *aux, Pilha *dest, Fila *movimentos){
     if(verificaTipoHanoiDuplo(orig, aux, dest)==1){
-        resolucaoHanoi(aux, dest, orig, aux->quant);
+        resolucaoHanoi(aux, dest, orig, aux->quant, movimentos);
     }
     if(verificaTipoHanoiDuplo(aux, orig, dest)==1){
-        resolucaoHanoi(orig, dest, aux, orig->quant);
+        resolucaoHanoi(orig, dest, aux, orig->quant, movimentos);
     }
     if(verificaTipoHanoiDuplo(orig, dest, aux)==1){
-        resolucaoHanoi(dest, aux, orig, dest->quant);
+        resolucaoHanoi(dest, aux, orig, dest->quant, movimentos);
     }
     if(verificaTipoHanoiDuplo(dest, orig, aux)==1){
-        resolucaoHanoi(orig, aux, dest, orig->quant);
+        resolucaoHanoi(orig, aux, dest, orig->quant, movimentos);
     }
     if(verificaTipoHanoiDuplo(aux, dest, orig)==1){
-        resolucaoHanoi(dest, orig, aux, dest->quant);
+        resolucaoHanoi(dest, orig, aux, dest->quant, movimentos);
     }
     if(verificaTipoHanoiDuplo(dest, aux, orig)==1){
-        resolucaoHanoi(aux, orig, dest, aux->quant);
+        resolucaoHanoi(aux, orig, dest, aux->quant, movimentos);
     }
 }
 
@@ -170,38 +172,38 @@ int verificaTipoHanoiTriplo(Pilha *orig, Pilha *aux, Pilha *dest){
     }
 }
 
-void resolveHanoiTriplo(Pilha *orig, Pilha *aux, Pilha *dest){
+void resolveHanoiTriplo(Pilha *orig, Pilha *aux, Pilha *dest, Fila *movimentos){
     if(verificaTipoHanoiTriplo(orig,aux,dest)==1){
-        resolucaoHanoi(dest,orig,aux, dest->quant);
+        resolucaoHanoi(dest,orig,aux, dest->quant, movimentos);
     }
     if(verificaTipoHanoiTriplo(orig,dest,aux)==1){
-        resolucaoHanoi(aux,orig,dest, aux->quant);
+        resolucaoHanoi(aux,orig,dest, aux->quant, movimentos);
     }
     if(verificaTipoHanoiTriplo(aux,orig,dest)==1){
-        resolucaoHanoi(dest,aux,orig, dest->quant);
+        resolucaoHanoi(dest,aux,orig, dest->quant, movimentos);
     }
     if(verificaTipoHanoiTriplo(aux,dest,orig)==1){
-        resolucaoHanoi(orig,aux,dest, orig->quant);
+        resolucaoHanoi(orig,aux,dest, orig->quant, movimentos);
     }
     if(verificaTipoHanoiTriplo(dest,aux,orig)==1){
-        resolucaoHanoi(orig,dest,aux, orig->quant);
+        resolucaoHanoi(orig,dest,aux, orig->quant, movimentos);
     }
     if(verificaTipoHanoiTriplo(dest,orig,aux)==1){
-        resolucaoHanoi(aux,dest,orig, aux->quant);
+        resolucaoHanoi(aux,dest,orig, aux->quant, movimentos);
     }
 }
 
-void cerebro(Pilha *orig, Pilha *aux, Pilha *dest, int total){
+void cerebro(Pilha *orig, Pilha *aux, Pilha *dest, int total, Fila *movimentos){
     while(dest->quant!=total){
         if(hanoiSimples(orig, aux, dest)!='X'){
-            resolveHanoiSimples(orig, aux, dest);
+            resolveHanoiSimples(orig, aux, dest, movimentos);
         }
         else{
             if(verificaTipo(orig,aux,dest)==2){
-                resolveHanoiDuplo(orig, aux, dest);
+                resolveHanoiDuplo(orig, aux, dest, movimentos);
             }
             if(verificaTipo(orig,aux,dest)==3){
-                resolveHanoiTriplo(orig, aux, dest);
+                resolveHanoiTriplo(orig, aux, dest, movimentos);
             }
         }
         
