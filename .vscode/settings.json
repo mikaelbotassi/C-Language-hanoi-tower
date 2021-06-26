@@ -5,6 +5,7 @@
         "pinos.h": "c",
         "stdio.h": "c",
         "stdlib.h": "c",
-        "locale.h": "c"
+        "locale.h": "c",
+        "string.h": "c"
     }
 }

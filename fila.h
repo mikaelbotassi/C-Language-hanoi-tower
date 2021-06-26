@@ -1,3 +1,6 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #ifndef _FILA_H
 #define _FILA_H
 
