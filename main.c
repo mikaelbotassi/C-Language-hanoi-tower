@@ -7,9 +7,9 @@
 #include <locale.h>
 #include <string.h>
 #include "pilha.h"
-//#include "fila.h"
+#include "fila.h"
 #include "Pilha.c"
-//#include "Fila.c"
+#include "Fila.c"
 
 //######    FUNÇÕES ###########
 
@@ -20,6 +20,7 @@ int main(){
     printf("Digite as entradas de dados:\n");
     int i=pegaTotalDiscos();
     int total=i;
+    Fila *movimentos = inicializaFila();
     Pilha *pinoA = inicializaPilha('A');
     Pilha *pinoB=inicializaPilha('B');
     Pilha *pinoC=inicializaPilha('C');
@@ -27,8 +28,9 @@ int main(){
     i=inserirDisco(pinoB,i, 'B');
     i=inserirDisco(pinoC,i, 'C');
     apresentaEntrada(pinoA,pinoB,pinoC);
-    cerebro(pinoA,pinoB,pinoC, total);
+    cerebro(pinoA,pinoB,pinoC, total, movimentos);
     apresentaEntrada(pinoA,pinoB,pinoC);
+    imprimeFila(movimentos);
     //excluiPilha(pinoA);
     //excluiPilha(pinoB);
     //excluiPilha(pinoC);

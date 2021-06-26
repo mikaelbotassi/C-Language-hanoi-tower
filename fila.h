@@ -9,8 +9,8 @@ typedef struct Fila Fila;
 //##### FUNÇÕES ########
 
 Fila *inicializaFila();
-void push(Fila * f, int novoEle);
-int pop(Fila *f);
+void push(Fila * f, char origem, char destino);
+char pop(Fila *f);
 void imprimeFila(Fila *f);
 void excluiFila(Fila *f);
 
