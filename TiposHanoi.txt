@@ -1,0 +1,38 @@
+Hanoi Simples:
+É um Hanoi onde todos os discos estão em um Pino, ex:
+5
+5 5 4 3 2 1
+0
+0
+
+ou
+
+3
+0
+3 3 2 1
+0
+
+Hanoi Duplo:
+É um Hanoi onde os discos estão distribuídos entre dois Pinos, ex:
+Hanoi Duplo 'AB':
+5
+3 3 2 1
+2 5 4
+0
+Hanoi Duplo 'AC':
+5
+3 3 2 1
+0
+2 5 4
+Hanoi Duplo 'BC':
+5
+0
+3 3 2 1
+2 5 4
+
+Hanoi Triplo:
+É um Hanoi onde os discos estejam distribuídos entre todos os 3 pinos, ex:
+4
+2 3 1
+1 2
+1 4

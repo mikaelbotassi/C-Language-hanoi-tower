@@ -59,12 +59,12 @@ int desempilha(Pilha *p){   //Retira um elemento da Pilha
         }
 }
 
-void excluiPilha(Pilha *p){
+void excluiPilha(Pilha *p){//exclui toda pilha
     while(p->topo!=NULL){
         desempilha(p);
     }
 }
-void apresentaPilha(Pilha *p){
+void apresentaPilha(Pilha *p){//Apresenta os nós da Pilha ao contrário
     Pilha *aux=inicializaPilha('X');
     int i;
     if(p->topo==NULL){

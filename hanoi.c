@@ -1,6 +1,6 @@
 #include "hanoi.h"
 
-int inserirDisco(Pilha *p, int total, char pino){
+int inserirDisco(Pilha *p, int total, char pino){ //Pega o total de discos no pino passado como parânetro
     int i;
     if(total!=0){
     printf("Quantos Discos ha no pino %c?", pino);
@@ -15,7 +15,7 @@ int inserirDisco(Pilha *p, int total, char pino){
     return total;
 }
 
-int validaQuantDiscos(int i, int total){
+int validaQuantDiscos(int i, int total){ //Valida se a quantidade de discos é menor que o total de discos restantes
     while(i>total){
         printf("\nNumero invalido! O número de discos neste pino excede a quantidade total de discos");
         printf("\nDigite a quantidade novamente: ");
@@ -24,7 +24,7 @@ int validaQuantDiscos(int i, int total){
     return i;
 }
 
-void leDiscos(Pilha *p, int i){
+void leDiscos(Pilha *p, int i){ //Lê os raios dos discos
     int cont,raio;
     for(cont=1;cont<=i;cont++){
         printf("Digite o raio do %i disco: ", cont);
@@ -33,18 +33,14 @@ void leDiscos(Pilha *p, int i){
     }
 }
 
-int pegaTotalDiscos(){
+int pegaTotalDiscos(){ //Pega o total de discos separados em todos os pinos, o total de discos que terão no jogo
     int i;
-    printf("\nDigite o total de discos(Maximo 10): ");
+    printf("\nDigite o total de discos: ");
     scanf("%d", &i);
-    while(i>10){
-        printf("O numero de discos excede o limite que e 10, por favor Digite Novamente: ");
-        scanf("%d", &i);
-    }
     return i;
 }
 
-void apresentaEntrada(Pilha *A, Pilha *B, Pilha *C){
+void apresentaEntrada(Pilha *A, Pilha *B, Pilha *C){ //Apresenta a entrada de dados de todos os pinos e a quant total de discos
     int total= A->quant+B->quant+C->quant;
     printf("\n\n");
     printf("\n%d\n", total);
@@ -59,7 +55,7 @@ void apresentaEntrada(Pilha *A, Pilha *B, Pilha *C){
     apresentaPilha(C);
 }
 
-void moveDisco(Pilha *A, Pilha *B, Fila *movimentos){
+void moveDisco(Pilha *A, Pilha *B, Fila *movimentos){ //Função que move um disco de um pino ao outro
     if(A->quant!=0){
         if(B->quant!=0){
             if(A->topo->elemento>B->topo->elemento){
@@ -82,7 +78,7 @@ void moveDisco(Pilha *A, Pilha *B, Fila *movimentos){
     }
 }
 
-void resolucaoHanoi(Pilha *orig, Pilha *aux, Pilha *dest, int total, Fila *movimentos){
+void resolucaoHanoi(Pilha *orig, Pilha *aux, Pilha *dest, int total, Fila *movimentos){ //Função principal de resolução do hanoi, função recursiva
     if(total==1){
         moveDisco(orig,dest, movimentos);
     }
@@ -94,6 +90,10 @@ void resolucaoHanoi(Pilha *orig, Pilha *aux, Pilha *dest, int total, Fila *movim
 }
 
 void resolveHanoiSimples(Pilha *orig, Pilha *aux, Pilha *dest, Fila *movimentos){
+/*
+Resolve o hanoi se este for um Hanoi Simples,
+vê em qual pino está e resolve.
+*/
     if(hanoiSimples(orig, aux, dest)=='A'){
             resolucaoHanoi(orig, aux, dest, orig->quant, movimentos);
         }
@@ -106,6 +106,9 @@ void resolveHanoiSimples(Pilha *orig, Pilha *aux, Pilha *dest, Fila *movimentos)
 }
 
 char hanoiSimples(Pilha *orig, Pilha *aux, Pilha *dest){
+/*
+verifica se a função é "Hanoi Simples"(Para fazer o que é, olhe o "Tipos Hanoi") e onde está todos os discos;
+*/
     if(orig->quant>0 && aux->quant==0 && dest->quant==0){
         return 'A';
     }
@@ -121,6 +124,10 @@ char hanoiSimples(Pilha *orig, Pilha *aux, Pilha *dest){
 }
 
 int verificaTipo(Pilha *orig, Pilha *aux, Pilha *dest){
+/*
+Se o hanoi não for um Hanoi Simples,vê se ele é um Hanoi Duplo ou um Hanoi Triplo.
+Se você não sabe o que é Hanoi Simples e Duplo veja o "TiposHanoi"
+*/    
     if((orig->quant>0 && aux->quant>0 && dest->quant==0) || (orig->quant>0 && aux->quant==0 && dest->quant>0)||(orig->quant==0 && aux->quant>0 && dest->quant>0)){
         return 2;
     }
@@ -130,6 +137,10 @@ int verificaTipo(Pilha *orig, Pilha *aux, Pilha *dest){
 }
 
 int verificaTipoHanoiDuplo(Pilha *orig, Pilha *aux, Pilha *dest){
+/*
+Verifica em quais 2 pinos estão distribuídos os discos 
+e em qual destes o Ultimo Disco é maior que o ultimo disco do outro pino
+*/
     if(orig->quant>0 && aux->quant>0){
         if((orig->topo->elemento>aux->topo->elemento) && dest->quant==0){
         return 1;
@@ -141,6 +152,10 @@ int verificaTipoHanoiDuplo(Pilha *orig, Pilha *aux, Pilha *dest){
 }
 
 void resolveHanoiDuplo(Pilha *orig, Pilha *aux, Pilha *dest, Fila *movimentos){
+/*
+Função que chama a função recursiva "resolucaoHanoi" para resolver o hanoi duplo
+passando os pinos certos como parâmetro
+*/
     if(verificaTipoHanoiDuplo(orig, aux, dest)==1){
         resolucaoHanoi(aux, dest, orig, aux->quant, movimentos);
     }
@@ -162,6 +177,10 @@ void resolveHanoiDuplo(Pilha *orig, Pilha *aux, Pilha *dest, Fila *movimentos){
 }
 
 int verificaTipoHanoiTriplo(Pilha *orig, Pilha *aux, Pilha *dest){
+/*
+Verifica como os discos estão distribuídos pelos pinos e
+qual disco do topo tem raio maior e qual tem o raio menor
+*/
     if(orig->quant!=0 && aux->quant!=0 && dest->quant!=0){
         if((orig->topo->elemento>aux->topo->elemento) && (orig->topo->elemento>dest->topo->elemento)&&(aux->topo->elemento>dest->topo->elemento)){
         return 1;
@@ -173,6 +192,10 @@ int verificaTipoHanoiTriplo(Pilha *orig, Pilha *aux, Pilha *dest){
 }
 
 void resolveHanoiTriplo(Pilha *orig, Pilha *aux, Pilha *dest, Fila *movimentos){
+/*
+MEdiante a resposta da função anterior esta função passa os  pinos corretos como parâmetros
+chamando a função recursiva "resolucaoHanoi" para mover os discos de um pino pro outro.
+*/
     if(verificaTipoHanoiTriplo(orig,aux,dest)==1){
         resolucaoHanoi(dest,orig,aux, dest->quant, movimentos);
     }
@@ -194,6 +217,11 @@ void resolveHanoiTriplo(Pilha *orig, Pilha *aux, Pilha *dest, Fila *movimentos){
 }
 
 void cerebro(Pilha *orig, Pilha *aux, Pilha *dest, int total, Fila *movimentos){
+/*
+Esta função é considerada o resolvedor do programa, após verificar qual tipo de Hanoi é, ele:
+Chama a função responsável por resolver o hanoi ou transforma-lo em outro hanoi.
+O while executa até que todos os discos estejam no Pino C(dest);
+*/
     while(dest->quant!=total){
         if(hanoiSimples(orig, aux, dest)!='X'){
             resolveHanoiSimples(orig, aux, dest, movimentos);

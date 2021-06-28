@@ -24,7 +24,8 @@ int main(){
     cerebro(pinoA,pinoB,pinoC, total, movimentos);
     imprimeFila(movimentos);
     apresentaEntrada(pinoA,pinoB,pinoC);
-    //excluiPilha(pinoA);
-    //excluiPilha(pinoB);
-    //excluiPilha(pinoC);
+    excluiPilha(pinoA);
+    excluiPilha(pinoB);
+    excluiPilha(pinoC);
+    excluiFila(movimentos);
 }
