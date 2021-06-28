@@ -1,7 +1,7 @@
 #include "pilha.h"
 
 //######    ESTRUTURAS ###########
-typedef struct NoPilha{
+/*typedef struct NoPilha{
     int elemento;
     struct NoPilha *prox;
 }NoPilha;
@@ -10,7 +10,7 @@ typedef struct Pilha{
     NoPilha *topo;
     int quant;
     char nome;
-}Pilha;
+}Pilha;*/
 
 //#######   FUNÇÕES #############
 Pilha *inicializaPilha(char nome){   //Aloca um espaço na memória e inicia a Fila

@@ -13,10 +13,10 @@ main.o: main.c
 	$(CC) $(flags) $(MAIN) $(CLFLAGS)
 
 pilha.o: pilha.c
-	$(CC) $(flags) Pilha.c
+	$(CC) $(flags) Pilha.c $(CFLAGS)
 
 fila.o: Fila.c
-	$(CC) $(flags) Fila.c
+	$(CC) $(flags) Fila.c $(CFLAGS)
 
 hanoi.o: hanoi.c
 	$(CC) $(flags) hanoi.c $(CLFLAGS)

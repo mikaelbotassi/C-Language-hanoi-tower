@@ -6,8 +6,16 @@
 
 //##### STRUCTS ###########
 
-typedef struct NoPilha NoPilha;
-typedef struct Pilha Pilha;
+typedef struct NoPilha{
+    int elemento;
+    struct NoPilha *prox;
+}NoPilha;
+
+typedef struct Pilha{
+    NoPilha *topo;
+    int quant;
+    char nome;
+}Pilha;
 
 //########  FUNÇÕES #########
 
