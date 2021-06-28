@@ -47,7 +47,7 @@ int desempilha(Pilha *p){   //Retira um elemento da Pilha
 
     if(aux==NULL){
         printf("Pilha Vazia!\n");
-        return;
+        return 0;
     }
     else{
         p->topo=aux->prox;

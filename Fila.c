@@ -53,7 +53,7 @@ char pop(Fila *f){   //Retira um elemento da Fila
     char elemento;
     if(aux==NULL){
         printf("\n\nFila vazia! Não é possível retirar elementos!\n\n");
-        return;
+        return '\0';
     }
     else{
         f->inicio=f->inicio->prox;

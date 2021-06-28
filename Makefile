@@ -1,3 +1,5 @@
+######	MAKEFILE	########
+
 CC = gcc
 flags = -c -Wall
 CFLAGS = -lm
@@ -8,9 +10,10 @@ MAIN = main.c
 
 all: fila.o pilha.o hanoi.o main.o
 	$(CC) $(OBJS) -o $(EXE)
+	./main
 
 main.o: main.c
-	$(CC) $(flags) $(MAIN) $(CLFLAGS)
+	$(CC) $(flags) $(MAIN) $(CFLAGS)
 
 pilha.o: pilha.c
 	$(CC) $(flags) Pilha.c $(CFLAGS)
@@ -19,13 +22,7 @@ fila.o: Fila.c
 	$(CC) $(flags) Fila.c $(CFLAGS)
 
 hanoi.o: hanoi.c
-	$(CC) $(flags) hanoi.c $(CLFLAGS)
-
-passos: main.c
-	gcc -E main.c -o main.i
-	gcc -S main.i -o main.s
-	gcc -c main.s -o main.o
-	gcc main.o fila.o pilha.o hanoi.o -o main -lm
+	$(CC) $(flags) hanoi.c $(CFLAGS)
 
 
 listar:
@@ -34,6 +31,3 @@ listar:
 clean:
 	rm -f *.o *.i *.s
 	rm -f $(EXE)
-
-run:
-	./main

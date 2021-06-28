@@ -134,6 +134,9 @@ Se você não sabe o que é Hanoi Simples e Duplo veja o "TiposHanoi"
     if(orig->quant>0 && aux->quant>0 && dest->quant>0){
         return 3;
     }
+    else{
+        return 0;
+    }
 }
 
 int verificaTipoHanoiDuplo(Pilha *orig, Pilha *aux, Pilha *dest){
@@ -144,6 +147,9 @@ e em qual destes o Ultimo Disco é maior que o ultimo disco do outro pino
     if(orig->quant>0 && aux->quant>0){
         if((orig->topo->elemento>aux->topo->elemento) && dest->quant==0){
         return 1;
+        }
+        else{
+            return 0;
         }
     }
     else{
@@ -184,7 +190,10 @@ qual disco do topo tem raio maior e qual tem o raio menor
     if(orig->quant!=0 && aux->quant!=0 && dest->quant!=0){
         if((orig->topo->elemento>aux->topo->elemento) && (orig->topo->elemento>dest->topo->elemento)&&(aux->topo->elemento>dest->topo->elemento)){
         return 1;
-    }
+        }
+        else{
+            return 0;
+        }
     }
     else{
         return 0;
