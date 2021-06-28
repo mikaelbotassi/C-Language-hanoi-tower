@@ -2,7 +2,7 @@
 
 //### INCLUDES ###############
 #include <locale.h>
-#include "hanoi.c"
+#include "hanoi.h"
 
 //######    FUNÇÕES ###########
 

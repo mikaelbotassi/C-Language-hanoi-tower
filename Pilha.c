@@ -64,7 +64,7 @@ void excluiPilha(Pilha *p){//exclui toda pilha
         desempilha(p);
     }
 }
-void apresentaPilha(Pilha *p){//Apresenta os nós da Pilha ao contrário
+void apresentaPilha(Pilha *p){//Apresenta os nós da Pilha ao CONTRÁRIO(Do primeiro para o último)
     Pilha *aux=inicializaPilha('X');
     int i;
     if(p->topo==NULL){

@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "pilha.c"
-#include "Fila.c"
+#include "pilha.h"
+#include "fila.h"
+
 #ifndef _HANOI_H
 #define _HANOI_H
 
